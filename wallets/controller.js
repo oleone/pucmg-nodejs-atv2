@@ -3,7 +3,7 @@ const service = require('./service');
 module.exports = {
     GetWallets: async (req, res) => {
         try {
-            let wallets = await service.GetAllWallets();
+            let wallets = await service.GetWallets();
             res.send(wallets).status(200);
         } catch (error) {
             res.send({ errorCode: 500, message: 'Internal server error' }).status(500);
