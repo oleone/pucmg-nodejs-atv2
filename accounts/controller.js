@@ -1,7 +1,7 @@
 const service = require('./service');
 
 module.exports = {
-    GetWallets: async (req, res) => {
+    GetAccounts: async (req, res) => {
         try {
             let wallets = await service.GetAllWallets();
             res.send(wallets).status(200);
@@ -9,18 +9,18 @@ module.exports = {
             res.send({ errorCode: 500, message: 'Internal server error' }).status(500);
         }
     },
-    GetWalletById: async (req, res) => {
+    GetAccountById: async (req, res) => {
         const id = req.params['walletId'];
         let wallet = await service.GetWalletById(id);
         res.send(wallet).status(200);
     },
-    CreateWallet: (req, res) => {
+    CreateAccount: (req, res) => {
         res.send(true).status(200);
     },
-    UpdateWallet: (req, res) => {
+    UpdateAccount: (req, res) => {
         res.send(true).status(200);
     },
-    DeleteWallet: (req, res) => {
+    DeleteAccount: (req, res) => {
         res.send(true).status(200);
     }
 }
