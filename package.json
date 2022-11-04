@@ -2,13 +2,17 @@
   "name": "exercicio2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
+  "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "start:dev": "nodemon server.js"
+    "start": "yarn migrate && node src/index.js",
+    "start:dev": "nodemon ./src/index.js --config nodemon.json",
+    "migration:make": "knex migrate:make --esm --knexfile=./src/config/knexfile.mjs",
+    "migrate": "knex migrate:latest --esm --knexfile=./src/config/knexfile.mjs",
+    "migrate:down": "knex migrate:down --esm --knexfile=./src/config/knexfile.mjs"
   },
   "keywords": [],
-  "author": "",
+  "author": "Bruno Leone - Acetime Soluções Digitais LTDA",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -17,6 +21,7 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
     "knex": "^2.3.0",
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "uuid": "^9.0.0"
   }
 }

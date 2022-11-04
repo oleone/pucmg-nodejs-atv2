@@ -1,0 +1,10 @@
+services:
+  pg:
+    container_name: database_postgres_dwallet
+    image: postgres:13-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=dwallet
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=dbpass
