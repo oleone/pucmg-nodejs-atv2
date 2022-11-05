@@ -8,3 +8,9 @@ services:
       - POSTGRES_DB=dwallet
       - POSTGRES_USER=dbuser
       - POSTGRES_PASSWORD=dbpass
+
+  api:
+    container_name: api_pucmg_nodejs_atv2
+    image: node:16
+    ports:
+      - 3001:3001

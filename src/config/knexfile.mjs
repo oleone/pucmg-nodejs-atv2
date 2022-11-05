@@ -2,7 +2,7 @@ export default {
   development: {
     client: 'pg',
     debug: true,
-    connection: 'postgres://dbuser:foobar@0.0.0.0:5432/url_shortener',
+    connection: 'postgres://dbuser:dbpass@0.0.0.0:5432/dwallet',
     migrations: {
       directory: '../migrations',
       tableName: 'db_migrations',

@@ -8,7 +8,6 @@ import { AccountRouter } from './routers/accounts-router.js';
 export const startServer = (port) => {
     const app = express();
 
-
     app.use(cors());
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
