@@ -4,10 +4,10 @@ WORKDIR /usr/src/app
 
 COPY ./package.json ./
 
-COPY ./src .
+COPY ./src ./src
 
 RUN npm install
 
-EXPOSE 3001
+EXPOSE 3000
 
-CMD ["node", "index.js"]
+RUN npm start
