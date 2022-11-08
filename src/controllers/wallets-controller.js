@@ -25,6 +25,6 @@ export class WalletController {
     }
 
     update = async (req, res) => {
-        let updated
+        // let updated
     }
 }
