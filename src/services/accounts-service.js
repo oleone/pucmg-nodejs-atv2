@@ -9,15 +9,15 @@ export class AccountService {
         this.repository = _repository;
     }
 
-    getAllAccounts = async () => {
+    getAll = async () => {
         return await this.repository.getAll();
     }
 
-    getAccountById = async (id) => {
+    getById = async (id) => {
         return await this.repository.getById(id);
     }
 
-    createAccount = async (data) => {
+    create = async (data) => {
         try {
             const account = new Account({
                 fullName: data.fullName,
@@ -26,6 +26,26 @@ export class AccountService {
             })
 
             return await this.repository.create(account);
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    update = async (id, data) => {
+        try {
+            const account = await this.repository.getById(id);
+
+            // TODO: UPDATE THIS FIELDS WITH DATA
+
+            return await this.repository.update(account);
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    delete = async (id) => {
+        try {
+            // TODO: A CONTA NÃO PODE SER DELETADA E SIM INATIVADA
         } catch (err) {
             throw err;
         }

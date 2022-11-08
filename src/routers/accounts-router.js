@@ -13,11 +13,11 @@ export class AccountRouter {
         /** @type import("../controllers/account-repository").AccountRepository */
         const controller = new AccountController(accountService);
 
-        route.get('/', controller.getAllAccounts);
-        route.post('/', controller.createAccount);
-        route.get('/:id', controller.getAccountById);
-        // route.put('/:id', controller.updateAccount);
-        // route.delete('/:id', controller.deleteAccount);
+        route.get('/', controller.getAll);
+        route.post('/', controller.create);
+        route.get('/:id', controller.getById);
+        route.put('/:id', controller.update);
+        route.delete('/:id', controller.delete);
 
         return route;
     }

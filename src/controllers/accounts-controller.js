@@ -8,35 +8,67 @@ export class AccountController {
     }
 
 
-    getAllAccounts = async (req, res) => {
-        let account = await this.service.getAllAccounts();
+    getAll = async (req, res) => {
+        try {
+            let account = await this.service.getAll();
 
-        res.send(account).status(200);
+            res.send(account).status(200);
+        } catch (error) {
+            res.send(error).status(500);
+        }
     }
 
-    createAccount = async (req, res) => {
-        let payload = req.body;
+    create = async (req, res) => {
+        try {
+            let payload = req.body;
 
-        if (!payload.fullName || !payload.email || !payload.password) {
-            return res.status(400).json({
-                message: 'Payload is incorrect',
-                status: 400,
-            })
+            if (!payload.fullName || !payload.email || !payload.password) {
+                return res.status(400).json({
+                    message: 'Payload is incorrect',
+                    status: 400,
+                })
+            }
+
+            let walletCreated = await this.service.create(payload);
+
+            res.send(walletCreated).status(200);
+        } catch (error) {
+            res.send(error).status(500);
         }
-
-        let walletCreated = await this.service.createAccount(payload);
-
-        res.send(walletCreated).status(200);
     }
 
-    getAccountById = async (req, res) => {
-        const id = req.param.id;
+    getById = async (req, res) => {
+        try {
+            const id = req.param.id;
 
-        if (!id) {
-            res.status(403);
+            if (!id) {
+                res.status(403);
+            }
+
+            const account = await this.service.getById(id);
+            res.send(account).status(200);
+        } catch (error) {
+            res.send(error).status(500);
         }
+    }
 
-        const account = await this.service.getAccountById(id);
-        res.send(account).status(200);
+    update = async (req, res) => {
+        try {
+            const payload = req.body;
+            const id = req.param.id;
+
+            const updated = await this.service.update(id, payload);
+            res.send(updated).status(201);
+        } catch (error) {
+            res.send(error).status(500);
+        }
+    }
+
+    delete = async (req, res) => {
+        try {
+
+        } catch (error) {
+
+        }
     }
 }

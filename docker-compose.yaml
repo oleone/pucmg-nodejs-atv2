@@ -13,16 +13,17 @@ services:
       # - /private/var/lib/postgresql:/var/lib/postgresql
     networks:
       - pucmg_nodejs_atv2
-  # api:
-  #   container_name: api_pucmg_nodejs_atv2
-  #   build: .
-  #   image: node:16
-  #   depends_on:
-  #     - database
-  #   ports:
-  #     - 3000:3000
-  #   networks:
-  #     - pucmg_nodejs_atv2
+
+  api:
+    container_name: api_pucmg_nodejs_atv2
+    build: .
+    image: node:16
+    depends_on:
+      - database
+    ports:
+      - 3000:3000
+    networks:
+      - pucmg_nodejs_atv2
 
 networks:
   pucmg_nodejs_atv2:

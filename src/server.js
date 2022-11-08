@@ -3,7 +3,7 @@ import cors from 'cors';
 import path from 'path';
 
 import { AccountRouter } from './routers/accounts-router.js';
-// import walletsRoute from './wallets/router';
+import { WalletRouter } from './routers/wallets-router.js';
 
 export const startServer = (port) => {
     const app = express();
@@ -15,7 +15,7 @@ export const startServer = (port) => {
     app.use('/', express.static(path.join(path.resolve(), '/src/public')));
 
     app.use('/api/accounts', new AccountRouter());
-    // app.use('/api/wallets', walletsRoute);
+    app.use('/api/wallets', new WalletRouter());
 
     app.listen(port);
 }

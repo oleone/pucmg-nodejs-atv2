@@ -4,6 +4,10 @@ export class WalletService {
     constructor() { }
 
     getAll = async () => {
+        return this.repository.getAll();
+    }
 
+    create = async (payload) => {
+        return this.repository.create(payload);
     }
 }
