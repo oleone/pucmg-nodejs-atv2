@@ -1,4 +1,6 @@
 services:
+  # migration:
+
   database:
     container_name: database_postgres_dwallet
     image: postgres:13-alpine
@@ -17,9 +19,12 @@ services:
   api:
     container_name: api_pucmg_nodejs_atv2
     build: .
-    image: node:16
+    # image: node:18-alpine
     depends_on:
       - database
+    restart: on-failure
+    # command: bash -c "npm run migrate && npm run start"
+    command: "npm run start"
     ports:
       - 3000:3000
     networks:

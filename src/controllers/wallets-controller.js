@@ -3,7 +3,9 @@ export class WalletController {
     /** @type import('../services/wallets-service').WalletService */
     service;
 
-    constructor() { }
+    constructor(_service) {
+        this.service = _service;
+    }
 
     getAll = async (req, res) => {
         try {
@@ -25,6 +27,6 @@ export class WalletController {
     }
 
     update = async (req, res) => {
-        // let updated
+        res.status(200);
     }
 }

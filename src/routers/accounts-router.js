@@ -10,7 +10,7 @@ export class AccountRouter {
         const accountRepository = new AccountRepository();
         const accountService = new AccountService(accountRepository);
 
-        /** @type import("../controllers/account-repository").AccountRepository */
+        /** @type import("../controllers/account-controller").AccountController */
         const controller = new AccountController(accountService);
 
         route.get('/', controller.getAll);
